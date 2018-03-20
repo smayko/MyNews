@@ -64,14 +64,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
 
 
     //create Dao Object
-    public Dao<News, Integer> getContactDao() throws SQLException {
+    public Dao<News, Integer> getNewsDao() throws SQLException {
         if (newsDao == null) {
             newsDao = getDao(News.class);
         }
         return newsDao;
     }
 
-    public Dao<Comments, Integer> getPhoneDao() throws SQLException {
+    public Dao<Comments, Integer> getCommentsDao() throws SQLException {
         if (commentsDao == null) {
             commentsDao = getDao(Comments.class);
         }

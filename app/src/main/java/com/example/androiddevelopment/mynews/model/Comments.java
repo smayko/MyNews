@@ -22,6 +22,7 @@ public class Comments {
     public static final String COLUMN_DESCRIPTION = " comment_desc";
     public static final String COLUMN_AUTHOR = "comment_author";
     public static final String COLUMN_DATE = "comment_date";
+    public static final String COLUMN_NEWS= "news_id";
 
     @DatabaseField(columnName = COLUMN_ID, generatedId = true)
     private int id;
@@ -33,6 +34,8 @@ public class Comments {
     private String comment_author;
     @DatabaseField(columnName = COLUMN_DATE, dataType = DataType.DATE_STRING, format = DATE_FORMAT)
     private Date comment_date;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = COLUMN_NEWS)
+    private News news;
 
     public Comments (){
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyNews</string>
+    <string name="created_by">This App was created By Nikola Kosmajac 2018</string>
 </resources>
