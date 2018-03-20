@@ -10,6 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.androiddevelopment.mynews.db.DatabaseHelper;
+import com.example.androiddevelopment.mynews.model.News;
+import com.example.androiddevelopment.mynews.utils.Utils;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 /**
  * Created by androiddevelopment on 20.3.18..
@@ -18,6 +26,14 @@ import android.view.MenuItem;
 public class NewsDetailsActivity extends AppCompatActivity{
 
     private DrawerLayout mDrawer;
+    private TextView tvname;
+    private TextView tvdesc;
+    private TextView tvdate;
+    private TextView tvauthor;
+    private ImageView imageView;
+
+    DatabaseHelper databaseHelper;
+    int newsId;
 
 
     @Override
@@ -25,9 +41,22 @@ public class NewsDetailsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_details_activity);
         mDrawer = findViewById(R.id.navigation_drawer);
+        tvname = (TextView) findViewById(R.id.tvNewsname);
+        tvdesc = (TextView) findViewById(R.id.tvNewsDesc);
+        tvdate = (TextView) findViewById(R.id.tvNewsDate);
+        tvauthor = (TextView) findViewById(R.id.tvNewsAuthor);
+        imageView = (ImageView) findViewById(R.id.ivNewsImage);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+
+        //get info from previous activity
+        Intent intent = getIntent();
+        newsId = intent.getIntExtra("id", 0);
+
+        implemetnDrawer();
 
     }
 
@@ -42,7 +71,18 @@ public class NewsDetailsActivity extends AppCompatActivity{
 
         switch (id){
             case R.id.add_comment :
-                //todo add comment
+                try {
+
+                    Intent intent = new Intent (NewsDetailsActivity.this, AddCommentActivity.class);
+                    intent.putExtra("id", newsId);
+                    startActivity(intent);
+
+                    if (Utils.isShowToast(NewsDetailsActivity.this)) {
+                        Toast.makeText(NewsDetailsActivity.this, "Coment Added", Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

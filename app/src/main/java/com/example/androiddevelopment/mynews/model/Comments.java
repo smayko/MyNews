@@ -80,4 +80,12 @@ public class Comments {
     public void setComment_date(Date comment_date) {
         this.comment_date = comment_date;
     }
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
 }

@@ -19,6 +19,7 @@
 
         <activity android:name=".NewsDetailsActivity"></activity>
         <activity android:name=".MyPreferences"></activity>
+        <activity android:name=".AddCommentActivity"></activity>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.example.androiddevelopment.mynews;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -59,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id){
+            case R.id.home:
+                mDrawer.openDrawer(GravityCompat.START);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void insertNews(){
 
@@ -67,9 +80,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             ArrayList<News> newsList = new ArrayList<>();
             ArrayList <Comments> comments = new ArrayList<>();
-
-
-
 
             for(int i = 0; i<15; i++){
                 News newss = new News();
