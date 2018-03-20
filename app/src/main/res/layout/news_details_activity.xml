@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <LinearLayout
+            android:layout_marginTop="60dp"
             android:id="@+id/wraper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,10 +56,28 @@
         <ImageView
             android:id="@+id/ivNewsImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/wraper"/>
 
+            <Button
+                android:id="@+id/btnDisLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dislike"
+                android:layout_below="@id/ivNewsImage"
+                android:layout_alignParentLeft="true"/>
+
+
+            <Button
+                android:layout_below="@id/ivNewsImage"
+                android:id="@+id/btnLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Like"
+                android:layout_alignParentRight="true"/>
+
             <ListView
+                android:id="@+id/lcComments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ivNewsImage">
